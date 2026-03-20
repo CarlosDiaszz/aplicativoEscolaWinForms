@@ -10,11 +10,42 @@ using System.Windows.Forms;
 
 namespace AplicativoEscola
 {
-    public partial class Cadastro : Form
+    public partial class frmCadastro : Form
     {
-        public Cadastro()
+        public string nome;
+        public string dataNascimento;
+        public string telefone;
+        public string cidade;
+        public string estado;
+        public string usuario;
+        public string cpf;
+        public string senha;
+
+        public frmCadastro()
         {
             InitializeComponent();
+
+        }
+
+        private void frmCadastro_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btnCadastro_Click(object sender, EventArgs e)
+        {
+            nome = txtNome.Text;
+            dataNascimento = txtDataNascimento.Text;
+            telefone = txtTelefone.Text;
+            cidade = txtCidade.Text;
+            estado = txtEstado.SelectedItem.ToString();
+            cpf = txtCPF.Text;
+            usuario = txtUsuario.Text;
+            senha = txtSenha.Text;
+            Professor professorObjeto = new Professor(nome, dataNascimento, estado, cidade, cpf, telefone, usuario, senha);
+            professorObjeto.CadastrarProfessor();
+            this.Close();
         }
     }
 }
